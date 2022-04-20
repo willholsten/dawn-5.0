@@ -1,0 +1,53 @@
+$colorGreen: #07393B;
+$colorSand: #EBE4D8;
+$colorNavy: #202A45;
+$colorDarkCyan: #297679;
+$colorDuckEgg: #60AC9B;
+$colorCharcoal: #121713;
+$colorSilver: #C0CDCD;
+$colorPlatinum: #E5EBEB;
+$colorFloralWhite: #FAF8F5;
+
+
+$colorAnnouncementMobile: var(--colorAnnouncementMobile);
+$colorAnnouncementTextMobile: var(--colorAnnouncementTextMobile);
+$colorAnnouncement: var(--colorAnnouncement);
+$colorAnnouncementText: var(--colorAnnouncementText);
+
+
+$typeFontPrimary: 'FilsonSoft', sans-serif;
+
+$typeSizeSmall: 14px;
+$typeSizeBase: var(--typeBaseSize);
+$typeHeaderSize: 78px;
+
+$h2SizeMobile: calc(var($typeHeaderSize)*0.73);
+$h3SizeMobile: calc(var($typeHeaderSize)*0.45);
+$h4SizeMobile: calc(var($typeHeaderSize)*0.3);
+
+$h2SizeDesktop: calc(var($typeHeaderSize)*0.86);
+$h3SizeDesktop: calc(var($typeHeaderSize)*0.73);
+$h4SizeDesktop: calc(var($typeHeaderSize)*0.4);
+
+$typeButtonSize: 16px;
+
+$typeWeightBase: 400;
+$typeWeightBold: 700;
+$typeWeightBlack: 900;
+
+$letterSpacingHeader: -1px;
+$letterSpacingSmall: 0.5px;
+$letterSpacingMedium: 2px;
+
+$paddingMobile: 60px 0;
+$paddingDesktop: 140px 0;
+
+$borderRadiusSmall: 4px;
+$borderRadiusLarge: 20px;
+$collectionBorderRadius: 37px;
+
+$screen-md-min: 769px;
+$screen-lg-min: 1024px;
+$screen-xl-min: 1440px;
+
+$transitionHover: all 0.2s;
