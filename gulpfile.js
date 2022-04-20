@@ -26,7 +26,7 @@ function css(cb) {
 
 // JS function 
 function js(cb) {
-  const source = './src/js/**/**/*.js';
+  const source = './src/js/**/*.js';
 
   return src(source)
     .pipe(concat('app.js'))

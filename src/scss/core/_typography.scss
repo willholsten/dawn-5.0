@@ -1,52 +1,40 @@
 .h1,h1{
-  font-size:calc(var(--typeHeaderSize)*0.75);
-  font-weight: $typeWeightBlack;
-  letter-spacing: $letterSpacingHeader;
+
 }
 
 .h2,h2{
-  font-size:calc(var(--typeHeaderSize)*0.73);
-  font-weight: $typeWeightBlack;
-  letter-spacing: $letterSpacingHeader;
+
 }
 
 .h3,h3{
-  font-size:calc(var(--typeHeaderSize)*0.45);
-  font-weight: $typeWeightBlack;
-  letter-spacing: $letterSpacingHeader;
+
 }
 
 .h4,h4{
-  font-size:calc(var(--typeHeaderSize)*0.3);
-  font-weight:var(--typeHeaderWeight);
-  letter-spacing: 2.5px;
+
 }
 
 @include md {
   .h1,h1{
-    font-size:var(--typeHeaderSize);
   }
 
   .h2,h2{
-    font-size:calc(var(--typeHeaderSize)*0.86);
-    margin: 0 0 25px;
+
   }
 
   .h3,h3{
-    font-size:calc(var(--typeHeaderSize)*0.73);
+
   }
 
   .h4,h4{
-    font-size:calc(var(--typeHeaderSize)*0.4);
-    line-height: 1.1;
+
   }
 
   .h5, h5 {
-    font-weight: $typeWeightBlack;
-    letter-spacing: $letterSpacingMedium;
+
   }
 }
 
 .feature-row__text {
-  font-size: 1em;
+
 }
