@@ -56,7 +56,7 @@
                       <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                         <span class="active-facets__button-inner button button--tertiary">
                           {{ filter.label }}: {{ value.label | escape }}
-                          {% render 'icon-close-small' %}
+                          {% render 'icon', icon: 'icon-close-small' %}
                           <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                         </span>
                       </a>
@@ -68,7 +68,7 @@
                         <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
                           <span class="active-facets__button-inner button button--tertiary">
                             {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
-                            {% render 'icon-close-small' %}
+                            {% render 'icon', icon: 'icon-close-small' %}
                             <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                           </span>
                         </a>
@@ -89,7 +89,7 @@
                   <summary class="facets__summary caption-large focus-offset" aria-label="{{ filter.label }} ({{ 'products.facets.filters_selected.one' | t: count: filter.active_values.size }})">
                     <div>
                       <span>{{ filter.label | escape }}{%- if filter_type == 'vertical' -%}<span class="facets__selected no-js-hidden{% if filter.active_values.size == 0 %} hidden{% endif %}"> ({{ filter.active_values.size }})</span>{% endif %}</span>
-                      {% render 'icon-caret' %}
+                      {% render 'icon', icon: 'icon-caret' %}
                     </div>
                   </summary>
                   <div id="Facet-{{ forloop.index }}-{{ section.id }}" class="parent-display {% if filter_type == 'horizontal' %}facets__display{% else %}facets__display-vertical{% endif %}">
@@ -201,7 +201,7 @@
                   <summary class="facets__summary caption-large focus-offset">
                     <div>
                       <span>{{ filter.label | escape }}</span>
-                      {% render 'icon-caret' %}
+                      {% render 'icon', icon: 'icon-caret' %}
                     </div>
                   </summary>
                   <div id="Facet-{{ forloop.index }}-{{ section.id }}" class="{% if filter_type == 'horizontal' %}facets__display{% else %}facets__display-vertical{% endif %}">
@@ -271,7 +271,7 @@
                     <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                       <span class="active-facets__button-inner button button--tertiary">
                         {{ filter.label }}: {{ value.label | escape }}
-                        {% render 'icon-close-small' %}
+                        {% render 'icon', icon: 'icon-close-small' %}
                         <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                       </span>
                     </a>
@@ -283,7 +283,7 @@
                       <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
                         <span class="active-facets__button-inner button button--tertiary">
                           {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
-                          {% render 'icon-close-small' %}
+                          {% render 'icon', icon: 'icon-close-small' %}
                           <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                         </span>
                       </a>
@@ -319,7 +319,7 @@
                       <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                     {%- endfor -%}
                   </select>
-                  {% render 'icon-caret' %}
+                  {% render 'icon', icon: 'icon-caret' %}
                 </div>
               </div>
 
@@ -365,7 +365,7 @@
                     <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                   {%- endfor -%}
                 </select>
-                {% render 'icon-caret' %}
+                {% render 'icon', icon: 'icon-caret' %}
               </div>
             </div>
 
@@ -391,7 +391,7 @@
     <details class="mobile-facets__disclosure disclosure-has-popup">
       <summary class="mobile-facets__open-wrapper focus-offset">
         <span class="mobile-facets__open{% if filter_type == 'drawer' and enable_filtering == false %} medium-hide large-up-hide{% endif %}">
-          {% render 'icon-filter' %}
+          {% render 'icon', icon: 'icon-filter' %}
           <span class="mobile-facets__open-label button-label medium-hide large-up-hide">
             {%- if enable_filtering and enable_sorting -%}
               {{ 'products.facets.filter_and_sort' | t }}
@@ -407,7 +407,7 @@
             {%- endif -%}
           </span>
         </span>
-        <span tabindex="0" class="mobile-facets__close mobile-facets__close--no-js">{%- render 'icon-close' -%}</span>
+        <span tabindex="0" class="mobile-facets__close mobile-facets__close--no-js">{%- render 'icon', icon: 'icon-close' -%}</span>
       </summary>
       <facet-filters-form>
         <form id="FacetFiltersFormMobile" class="mobile-facets">
@@ -448,13 +448,13 @@
                       <summary class="mobile-facets__summary focus-inset">
                         <div>
                           <span>{{ filter.label | escape }}</span>
-                          <span class="mobile-facets__arrow no-js-hidden">{% render 'icon-arrow' %}</span>
-                          <noscript>{% render 'icon-caret' %}</noscript>
+                          <span class="mobile-facets__arrow no-js-hidden">{% render 'icon', icon: 'icon-arrow' %}</span>
+                          <noscript>{% render 'icon', icon: 'icon-caret' %}</noscript>
                         </div>
                       </summary>
                       <div id="FacetMobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__submenu gradient">
                         <button class="mobile-facets__close-button link link--text focus-inset" aria-expanded="true" type="button">
-                          {% render 'icon-arrow' %}
+                          {% render 'icon', icon: 'icon-arrow' %}
                           {{ filter.label | escape }}
                         </button>
                         <ul class="mobile-facets__list list-unstyled" role="list">
@@ -498,13 +498,13 @@
                       <summary class="mobile-facets__summary focus-inset">
                         <div>
                           <span>{{ filter.label | escape }}</span>
-                          <span class="mobile-facets__arrow no-js-hidden">{% render 'icon-arrow' %}</span>
-                          <noscript>{% render 'icon-caret' %}</noscript>
+                          <span class="mobile-facets__arrow no-js-hidden">{% render 'icon', icon: 'icon-arrow' %}</span>
+                          <noscript>{% render 'icon', icon: 'icon-caret' %}</noscript>
                         </div>
                       </summary>
                       <div id="FacetMobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__submenu gradient">
                         <button class="mobile-facets__close-button link link--text focus-inset" aria-expanded="true" type="button">
-                          {% render 'icon-arrow' %}
+                          {% render 'icon', icon: 'icon-arrow' %}
                           {{ filter.label | escape }}
                         </button>
 
@@ -575,7 +575,7 @@
                             <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                           {%- endfor -%}
                         </select>
-                        {% render 'icon-caret' %}
+                        {% render 'icon', icon: 'icon-caret' %}
                       </div>
                     </div>
                   </div>
@@ -612,7 +612,7 @@
           <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
             <span class="active-facets__button-inner button button--tertiary">
               {{ filter.label }}: {{ value.label | escape }}
-              {% render 'icon-close-small' %}
+              {% render 'icon', icon: 'icon-close-small' %}
               <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
             </span>
           </a>
@@ -625,7 +625,7 @@
             <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
               <span class="active-facets__button-inner button button--tertiary">
                 {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
-                {% render 'icon-close-small' %}
+                {% render 'icon', icon: 'icon-close-small' %}
                 <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
               </span>
             </a>
@@ -655,7 +655,7 @@
                   <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                 {%- endfor -%}
               </select>
-              {% render 'icon-caret' %}
+              {% render 'icon', icon: 'icon-caret' %}
             </div>
           </div>
 
@@ -703,7 +703,7 @@
                 <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
                   <span class="active-facets__button-inner button button--tertiary">
                     {{ filter.label }}: {{ value.label | escape }}
-                    {% render 'icon-close-small' %}
+                    {% render 'icon', icon: 'icon-close-small' %}
                     <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                   </span>
                 </a>
@@ -716,7 +716,7 @@
                   <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
                     <span class="active-facets__button-inner button button--tertiary">
                       {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
-                      {% render 'icon-close-small' %}
+                      {% render 'icon', icon: 'icon-close-small' %}
                       <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
                     </span>
                   </a>

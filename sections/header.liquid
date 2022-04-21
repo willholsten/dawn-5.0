@@ -62,15 +62,7 @@
   }
 {%- endstyle -%}
 
-<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
-  <symbol id="icon-search" viewbox="0 0 18 19" fill="none">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.03 11.68A5.784 5.784 0 112.85 3.5a5.784 5.784 0 018.18 8.18zm.26 1.12a6.78 6.78 0 11.72-.7l5.4 5.4a.5.5 0 11-.71.7l-5.41-5.4z" fill="currentColor"/>
-  </symbol>
-
-  <symbol id="icon-close" class="icon icon-close" fill="none" viewBox="0 0 18 17">
-    <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
-  </symbol>
-</svg>
+{% render 'icon', icon: 'icon-search' %}
 <{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
   <header class="header header--{{ section.settings.logo_position }} page-width{% if section.settings.menu != blank %} header--has-menu{% endif %}">
     {%- if section.settings.menu != blank -%}
@@ -78,8 +70,8 @@
         <details id="Details-menu-drawer-container" class="menu-drawer-container">
           <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
             <span>
-              {% render 'icon-hamburger' %}
-              {% render 'icon-close' %}
+              {% render 'icon', icon: 'icon-hamburger' %}
+              {% render 'icon', icon: 'icon-close' %}
             </span>
           </summary>
           <div id="menu-drawer" class="gradient menu-drawer motion-reduce" tabindex="-1">
@@ -93,13 +85,13 @@
                           <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
                             <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
                               {{ link.title | escape }}
-                              {% render 'icon-arrow' %}
-                              {% render 'icon-caret' %}
+                              {% render 'icon', icon: 'icon-arrow' %}
+                              {% render 'icon', icon: 'icon-caret' %}
                             </summary>
                             <div id="link-{{ link.title | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce" tabindex="-1">
                               <div class="menu-drawer__inner-submenu">
                                 <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                                  {% render 'icon-arrow' %}
+                                  {% render 'icon', icon: 'icon-arrow' %}
                                   {{ link.title | escape }}
                                 </button>
                                 <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
@@ -113,12 +105,12 @@
                                         <details id="Details-menu-drawer-submenu-{{ forloop.index }}">
                                           <summary class="menu-drawer__menu-item link link--text list-menu__item focus-inset">
                                             {{ childlink.title | escape }}
-                                            {% render 'icon-arrow' %}
-                                            {% render 'icon-caret' %}
+                                            {% render 'icon', icon: 'icon-arrow' %}
+                                            {% render 'icon', icon: 'icon-caret' %}
                                           </summary>
                                           <div id="childlink-{{ childlink.title | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
                                             <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                                              {% render 'icon-arrow' %}
+                                              {% render 'icon', icon: 'icon-arrow' %}
                                               {{ childlink.title | escape }}
                                             </button>
                                             <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
@@ -151,7 +143,7 @@
                 <div class="menu-drawer__utility-links">
                   {%- if shop.customer_accounts_enabled -%}
                     <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link focus-inset h5">
-                      {% render 'icon-account' %}
+                      {% render 'icon', icon: 'icon-account' %}
                       {%- liquid
                         if customer
                           echo 'customer.account_fallback' | t
@@ -165,7 +157,7 @@
                     {%- if settings.social_twitter_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
-                          {%- render 'icon-twitter' -%}
+                          {%- render 'icon', icon: 'icon-twitter' -%}
                           <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
                         </a>
                       </li>
@@ -173,7 +165,7 @@
                     {%- if settings.social_facebook_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
-                          {%- render 'icon-facebook' -%}
+                          {%- render 'icon', icon: 'icon-facebook' -%}
                           <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
                         </a>
                       </li>
@@ -181,7 +173,7 @@
                     {%- if settings.social_pinterest_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
-                          {%- render 'icon-pinterest' -%}
+                          {%- render 'icon', icon: 'icon-pinterest' -%}
                           <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
                         </a>
                       </li>
@@ -189,7 +181,7 @@
                     {%- if settings.social_instagram_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
-                          {%- render 'icon-instagram' -%}
+                          {%- render 'icon', icon: 'icon-instagram' -%}
                           <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
                         </a>
                       </li>
@@ -197,7 +189,7 @@
                     {%- if settings.social_tiktok_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
-                          {%- render 'icon-tiktok' -%}
+                          {%- render 'icon', icon: 'icon-tiktok' -%}
                           <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
                         </a>
                       </li>
@@ -205,7 +197,7 @@
                     {%- if settings.social_tumblr_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
-                          {%- render 'icon-tumblr' -%}
+                          {%- render 'icon', icon: 'icon-tumblr' -%}
                           <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
                         </a>
                       </li>
@@ -213,7 +205,7 @@
                     {%- if settings.social_snapchat_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_snapchat_link }}" class="list-social__link link">
-                          {%- render 'icon-snapchat' -%}
+                          {%- render 'icon', icon: 'icon-snapchat' -%}
                           <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
                         </a>
                       </li>
@@ -221,7 +213,7 @@
                     {%- if settings.social_youtube_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
-                          {%- render 'icon-youtube' -%}
+                          {%- render 'icon', icon: 'icon-youtube' -%}
                           <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
                         </a>
                       </li>
@@ -229,7 +221,7 @@
                     {%- if settings.social_vimeo_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
-                          {%- render 'icon-vimeo' -%}
+                          {%- render 'icon', icon: 'icon-vimeo' -%}
                           <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
                         </a>
                       </li>
@@ -351,7 +343,7 @@
                     <details id="Details-HeaderMenu-{{ forloop.index }}">
                       <summary class="header__menu-item list-menu__item link focus-inset">
                         <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
-                        {% render 'icon-caret' %}
+                        {% render 'icon', icon: 'icon-caret' %}
                       </summary>
                       <ul id="HeaderMenu-MenuList-{{ forloop.index }}" class="header__submenu list-menu list-menu--disclosure gradient caption-large motion-reduce global-settings-popup" role="list" tabindex="-1">
                         {%- for childlink in link.links -%}
@@ -364,7 +356,7 @@
                               <details id="Details-HeaderSubMenu-{{ forloop.index }}">
                                 <summary class="header__menu-item link link--text list-menu__item focus-inset caption-large">
                                   <span>{{ childlink.title | escape }}</span>
-                                  {% render 'icon-caret' %}
+                                  {% render 'icon', icon: 'icon-caret' %}
                                 </summary>
                                 <ul id="HeaderMenu-SubMenuList-{{ forloop.index }}" class="header__submenu list-menu motion-reduce">
                                   {%- for grandchildlink in childlink.links -%}
@@ -401,7 +393,7 @@
                     <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
                       <summary class="header__menu-item list-menu__item link focus-inset">
                         <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
-                        {% render 'icon-caret' %}
+                        {% render 'icon', icon: 'icon-caret' %}
                       </summary>
                       <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content gradient motion-reduce global-settings-popup" tabindex="-1">
                         <ul class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}" role="list">
@@ -515,7 +507,7 @@
 
       {%- if shop.customer_accounts_enabled -%}
         <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
-          {% render 'icon-account' %}
+          {% render 'icon', icon: 'icon-account' %}
           <span class="visually-hidden">
             {%- liquid
               if customer

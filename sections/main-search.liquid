@@ -134,7 +134,7 @@
                     <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                   {%- endfor -%}
                 </select>
-                {% render 'icon-caret' %}
+                {% render 'icon', icon: 'icon-caret' %}
               </div>
             </div>
             <noscript>

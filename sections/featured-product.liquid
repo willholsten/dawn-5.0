@@ -55,7 +55,7 @@
               data-shopify-title="{{ product.title | escape }}"
               data-shopify-xr-hidden
             >
-              {% render 'icon-3d-model' %}
+              {% render 'icon', icon: 'icon-3d-model' %}
               {{ 'products.product.xr_button' | t }}
             </button>
           {%- endif -%}
@@ -111,7 +111,7 @@
                 <quantity-input class="quantity">
                   <button class="quantity__button no-js-hidden" name="minus" type="button">
                     <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
-                    {% render 'icon-minus' %}
+                    {% render 'icon', icon: 'icon-minus' %}
                   </button>
                   <input class="quantity__input"
                       type="number"
@@ -123,7 +123,7 @@
                     >
                   <button class="quantity__button no-js-hidden" name="plus" type="button">
                     <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
-                    {% render 'icon-plus' %}
+                    {% render 'icon', icon: 'icon-plus' %}
                   </button>
                 </quantity-input>
               </div>
@@ -131,12 +131,12 @@
               <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
               <share-button id="Share-{{ section.id }}" class="share-button" {{ block.shopify_attributes }}>
                 <button class="share-button__button hidden">
-                  {% render 'icon-share' %}
+                  {% render 'icon', icon: 'icon-share' %}
                   {{ block.settings.share_label | escape }}
                 </button>
                 <details id="Details-{{ block.id }}-{{ section.id }}">
                   <summary class="share-button__button">
-                    {% render 'icon-share' %}
+                    {% render 'icon', icon: 'icon-share' %}
                     {{ block.settings.share_label | escape }}
                   </summary>
                   <div id="Product-share-{{ section.id }}" class="share-button__fallback motion-reduce">
@@ -154,11 +154,11 @@
                       <label class="field__label" for="url">{{ 'general.share.share_url' | t }}</label>
                     </div>
                     <button class="share-button__close hidden no-js-hidden">
-                      {% render 'icon-close' %}
+                      {% render 'icon', icon: 'icon-close' %}
                       <span class="visually-hidden">{{ 'general.share.close' | t }}</span>
                     </button>
                     <button class="share-button__copy no-js-hidden">
-                      {% render 'icon-clipboard' %}
+                      {% render 'icon', icon: 'icon-clipboard' %}
                       <span class="visually-hidden">{{ 'general.share.copy_to_clipboard' | t }}</span>
                     </button>
                   </div>
@@ -207,7 +207,7 @@
                               </option>
                             {%- endfor -%}
                           </select>
-                          {% render 'icon-caret' %}
+                          {% render 'icon', icon: 'icon-caret' %}
                         </div>
                       </div>
                     {%- endfor -%}
@@ -236,7 +236,7 @@
                         </option>
                       {%- endfor -%}
                     </select>
-                    {% render 'icon-caret' %}
+                    {% render 'icon', icon: 'icon-caret' %}
                   </div>
                 </div>
               </noscript>
@@ -325,14 +325,14 @@
           {%- endfor -%}
         <a{% if product == blank %} role="link" aria-disabled="true"{% else %} href="{{ product.url }}"{% endif %} class="link product__view-details animate-arrow">
           {{ 'products.product.view_full_details' | t }}
-          {% render 'icon-arrow' %}
+          {% render 'icon', icon: 'icon-arrow' %}
         </a>
         </div>
       </div>
     </div>
     <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal media-modal">
       <div class="product-media-modal__dialog" role="dialog" aria-label="{{ 'products.modal.label' | t }}" aria-modal="true" tabindex="-1">
-        <button id="ModalClose-{{ section.id }}" type="button" class="product-media-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+        <button id="ModalClose-{{ section.id }}" type="button" class="product-media-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon', icon: 'icon-close' %}</button>
 
         <div class="product-media-modal__content color-background-1 gradient" role="document" aria-label="{{ 'products.modal.label' | t }}" tabindex="0">
           {%- liquid

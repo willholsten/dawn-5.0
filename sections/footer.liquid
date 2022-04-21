@@ -115,15 +115,15 @@
                     {{ 'newsletter.label' | t }}
                   </label>
                   <button type="submit" class="newsletter-form__button field__button" name="commit" id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}">
-                    {% render 'icon-arrow' %}
+                    {% render 'icon', icon: 'icon-arrow' %}
                   </button>
                 </div>
                 {%- if form.errors -%}
-                  <small class="newsletter-form__message form__message" id="ContactFooter-error">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</small>
+                  <small class="newsletter-form__message form__message" id="ContactFooter-error">{% render 'icon', icon: 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</small>
                 {%- endif -%}
               </div>
               {%- if form.posted_successfully? -%}
-                <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="ContactFooter-success" tabindex="-1" autofocus>{% render 'icon-success' %}{{ 'newsletter.success' | t }}</h3>
+                <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="ContactFooter-success" tabindex="-1" autofocus>{% render 'icon', icon: 'icon-success' %}{{ 'newsletter.success' | t }}</h3>
               {%- endif -%}
             {%- endform -%}
           </div>
@@ -134,7 +134,7 @@
             {%- if settings.social_twitter_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_twitter_link }}" class="link list-social__link" >
-                  {%- render 'icon-twitter' -%}
+                  {%- render 'icon', icon: 'icon-twitter' -%}
                   <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
                 </a>
               </li>
@@ -142,7 +142,7 @@
             {%- if settings.social_facebook_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_facebook_link }}" class="link list-social__link" >
-                  {%- render 'icon-facebook' -%}
+                  {%- render 'icon', icon: 'icon-facebook' -%}
                   <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
                 </a>
               </li>
@@ -150,7 +150,7 @@
             {%- if settings.social_pinterest_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_pinterest_link }}" class="link list-social__link" >
-                  {%- render 'icon-pinterest' -%}
+                  {%- render 'icon', icon: 'icon-pinterest' -%}
                   <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
                 </a>
               </li>
@@ -158,7 +158,7 @@
             {%- if settings.social_instagram_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_instagram_link }}" class="link list-social__link" >
-                  {%- render 'icon-instagram' -%}
+                  {%- render 'icon', icon: 'icon-instagram' -%}
                   <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
                 </a>
               </li>
@@ -166,7 +166,7 @@
             {%- if settings.social_tiktok_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_tiktok_link }}" class="link list-social__link" >
-                  {%- render 'icon-tiktok' -%}
+                  {%- render 'icon', icon: 'icon-tiktok' -%}
                   <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
                 </a>
               </li>
@@ -174,7 +174,7 @@
             {%- if settings.social_tumblr_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_tumblr_link }}" class="link list-social__link" >
-                  {%- render 'icon-tumblr' -%}
+                  {%- render 'icon', icon: 'icon-tumblr' -%}
                   <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
                 </a>
               </li>
@@ -182,7 +182,7 @@
             {%- if settings.social_snapchat_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_snapchat_link }}" class="link list-social__link" >
-                  {%- render 'icon-snapchat' -%}
+                  {%- render 'icon', icon: 'icon-snapchat' -%}
                   <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
                 </a>
               </li>
@@ -190,7 +190,7 @@
             {%- if settings.social_youtube_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_youtube_link }}" class="link list-social__link" >
-                  {%- render 'icon-youtube' -%}
+                  {%- render 'icon', icon: 'icon-youtube' -%}
                   <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
                 </a>
               </li>
@@ -198,7 +198,7 @@
             {%- if settings.social_vimeo_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_vimeo_link }}" class="link list-social__link" >
-                  {%- render 'icon-vimeo' -%}
+                  {%- render 'icon', icon: 'icon-vimeo' -%}
                   <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
                 </a>
               </li>
@@ -224,7 +224,7 @@
                     </option>
                   {%- endfor -%}
                 </select>
-                {% render 'icon-caret' %}
+                {% render 'icon', icon: 'icon-caret' %}
               </div>
               <button class="button button--tertiary">{{ 'localization.update_country' | t }}</button>
             {%- endform -%}
@@ -236,7 +236,7 @@
                 <div class="disclosure">
                   <button type="button" class="disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="FooterCountryList" aria-describedby="FooterCountryLabel">
                     {{ localization.country.name }} ({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }})
-                    {% render 'icon-caret' %}
+                    {% render 'icon', icon: 'icon-caret' %}
                   </button>
                   <div class="disclosure__list-wrapper" hidden>
                     <ul id="FooterCountryList" role="list" class="disclosure__list list-unstyled">
@@ -268,7 +268,7 @@
                     </option>
                   {%- endfor -%}
                 </select>
-                {% render 'icon-caret' %}
+                {% render 'icon', icon: 'icon-caret' %}
               </div>
               <button class="button button--tertiary">{{ 'localization.update_language' | t }}</button>
             {%- endform -%}
@@ -281,7 +281,7 @@
                 <div class="disclosure">
                   <button type="button" class="disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="FooterLanguageList" aria-describedby="FooterLanguageLabel">
                     {{ localization.language.endonym_name | capitalize }}
-                    {% render 'icon-caret' %}
+                    {% render 'icon', icon: 'icon-caret' %}
                   </button>
                   <div class="disclosure__list-wrapper" hidden>
                     <ul id="FooterLanguageList" role="list" class="disclosure__list list-unstyled">
