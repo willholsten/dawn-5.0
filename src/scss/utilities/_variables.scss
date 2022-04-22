@@ -15,10 +15,13 @@ $colorAnnouncement: var(--colorAnnouncement);
 $colorAnnouncementText: var(--colorAnnouncementText);
 
 
-$typeFontPrimary: 'FilsonSoft', sans-serif;
+$typePrimary: var(--font-heading-family);
+$typeBody: var(--font-body-family);
 
-$typeSizeSmall: 14px;
-$typeSizeBase: var(--typeBaseSize);
+$typeSizeBase: 1.6rem;
+$typeSizeTiny: calc($typeSizeBase - 4px);
+$typeSizeSmall: calc($typeSizeBase - 2px);
+$typeSizeLarge: calc($typeSizeBase + 2px);
 $typeHeaderSize: 78px;
 
 $h2SizeMobile: calc(var($typeHeaderSize)*0.73);
@@ -29,18 +32,13 @@ $h2SizeDesktop: calc(var($typeHeaderSize)*0.86);
 $h3SizeDesktop: calc(var($typeHeaderSize)*0.73);
 $h4SizeDesktop: calc(var($typeHeaderSize)*0.4);
 
-$typeButtonSize: 16px;
-
 $typeWeightBase: 400;
 $typeWeightBold: 700;
 $typeWeightBlack: 900;
 
-$letterSpacingHeader: -1px;
 $letterSpacingSmall: 0.5px;
-$letterSpacingMedium: 2px;
-
-$paddingMobile: 60px 0;
-$paddingDesktop: 140px 0;
+$letterSpacingMedium: 1.7px;
+$letterSpacingLarge: 2px;
 
 $borderRadiusSmall: 4px;
 $borderRadiusLarge: 20px;

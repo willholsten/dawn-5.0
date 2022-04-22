@@ -12,6 +12,44 @@
     "settings": [
       {
         "type": "header",
+        "content": "General"
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "color",
+        "id": "announcement_bar_background_color",
+        "default": "#fff",
+        "label": "Announcement bar"
+      },
+      {
+        "type": "color",
+        "id": "announcement_bar_text_color",
+        "default": "#000",
+        "label": "Announcement bar text"
+      },
+      {
+        "type": "header",
+        "content": "Footer"
+      },
+      {
+        "type": "color",
+        "id": "colors_footer",
+        "label": "test"
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "color",
+        "id": "colors_button",
+        "label": "test"
+      },
+      {
+        "type": "header",
         "content": "t:settings_schema.colors.settings.header__1.content"
       },
       {

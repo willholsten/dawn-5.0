@@ -67,7 +67,7 @@
   <header class="header header--{{ section.settings.logo_position }} page-width{% if section.settings.menu != blank %} header--has-menu{% endif %}">
     {%- if section.settings.menu != blank -%}
       <header-drawer data-breakpoint="tablet">
-        <details id="Details-menu-drawer-container" class="menu-drawer-container">
+        <details id="Details-menu-drawer-container" class="menu-drawer-container {% if forloop.first == true %} mobile-shop-menu{% endif %}">
           <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
             <span>
               {% render 'icon', icon: 'icon-hamburger' %}
@@ -78,30 +78,20 @@
             <div class="menu-drawer__inner-container">
               <div class="menu-drawer__navigation-container">
                 <nav class="menu-drawer__navigation">
-                  <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+                  <ul class="menu-drawer__menu mega-menu-list-1 has-submenu list-menu" role="list">
                     {%- for link in section.settings.menu.links -%}
                       <li>
                         {%- if link.links != blank -%}
-                          <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
+                          <details id="Details-menu-drawer-menu-item-{{ forloop.index }}" {% if forloop.first == true %} open{% endif %}>
                             <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
                               {{ link.title | escape }}
-                              {% render 'icon', icon: 'icon-arrow' %}
-                              {% render 'icon', icon: 'icon-caret' %}
                             </summary>
                             <div id="link-{{ link.title | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce" tabindex="-1">
                               <div class="menu-drawer__inner-submenu">
-                                <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                                  {% render 'icon', icon: 'icon-arrow' %}
-                                  {{ link.title | escape }}
-                                </button>
-                                <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                                <ul class="menu-drawer__menu list-menu mega-menu-list-2" role="list" tabindex="-1">
                                   {%- for childlink in link.links -%}
                                     <li>
-                                      {%- if childlink.links == blank -%}
-                                        <a href="{{ childlink.url }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
-                                          {{ childlink.title | escape }}
-                                        </a>
-                                      {%- else -%}
+                  
                                         <details id="Details-menu-drawer-submenu-{{ forloop.index }}">
                                           <summary class="menu-drawer__menu-item link link--text list-menu__item focus-inset">
                                             {{ childlink.title | escape }}
@@ -113,8 +103,10 @@
                                               {% render 'icon', icon: 'icon-arrow' %}
                                               {{ childlink.title | escape }}
                                             </button>
-                                            <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                                            {%- if childlink.links != blank -%}
+                                            <ul class="menu-drawer__menu list-menu mega-menu-list-3" role="list" tabindex="-1">
                                               {%- for grandchildlink in childlink.links -%}
+                      
                                                 <li>
                                                   <a href="{{ grandchildlink.url }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
                                                     {{ grandchildlink.title | escape }}
@@ -122,9 +114,27 @@
                                                 </li>
                                               {%- endfor -%}
                                             </ul>
+                                            {% else %}
+                                            {% assign link_menu = childlink.title %}
+                                            <ul class="mega-menu__level-3 mega-menu-list-3 {% if linklists[link_menu].levels == 1 %}vertical{% endif %}"> 
+                                              {% for link in linklists[link_menu].links %}
+                                                <li class="mega-menu-list-item-3">{{ link.title }}
+                                                  <ul class="mega-menu-list-4">
+                                                    {% for link in link.links %}
+                                                      <li class="mega-menu-list-item-4">{{ link.title }}</li>
+                                                    {% endfor %}
+                                                  </ul>
+                                                </li>
+                                              {% endfor %}
+                                            </ul>
+
+
+                                            {% endif %}
+                                            
                                           </div>
                                         </details>
-                                      {%- endif -%}
+                                        {% else %}
+                                        
                                     </li>
                                   {%- endfor -%}
                                 </ul>
@@ -385,33 +395,46 @@
         </nav>
       {%- else -%}
         <nav class="header__inline-menu">
-          <ul class="list-menu list-menu--inline" role="list">
+          <ul class="list-menu list-menu--inline mega-menu-list-1" role="list">
             {%- for link in section.settings.menu.links -%}
-              <li>
+              <li class="mega-menu-list-item-1">
                 {%- if link.links != blank -%}
                   <header-menu>
-                    <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+                    <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu {% if forloop.first == true %} shop-menu{% endif %}" {%- if forloop.first == true -%}open{%- endif -%}>
                       <summary class="header__menu-item list-menu__item link focus-inset">
                         <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
-                        {% render 'icon', icon: 'icon-caret' %}
                       </summary>
-                      <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content gradient motion-reduce global-settings-popup" tabindex="-1">
-                        <ul class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}" role="list">
+                      <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content gradient motion-reduce global-settings-popup page-width" tabindex="-1">
+                        <ul class="mega-menu__list mega-menu-list-2 page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}" role="list">
                           {%- for childlink in link.links -%}
-                            <li>
+                            <li class="mega-menu__level-2 mega-menu-list-item-2">
                               <a href="{{ childlink.url }}" class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
                                 {{ childlink.title | escape }}
                               </a>
                               {%- if childlink.links != blank -%}
-                                <ul class="list-unstyled" role="list">
+                                <ul class="list-unstyled mega-menu__level-3 mega-menu-list-3" role="list">
                                   {%- for grandchildlink in childlink.links -%}
-                                    <li>
+                                    <li class="mega-menu-list-item-3">
                                       <a href="{{ grandchildlink.url }}" class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
                                         {{ grandchildlink.title | escape }}
                                       </a>
                                     </li>
                                   {%- endfor -%}
                                 </ul>
+                              {% else %}
+                                {% assign link_menu = childlink.title %}
+                                <ul class="mega-menu__level-3 mega-menu-list-3 {% if linklists[link_menu].levels == 1 %}vertical{% endif %}"> 
+                                  {% for link in linklists[link_menu].links %}
+                                    <li class="mega-menu-list-item-3">{{ link.title }}
+                                      <ul class="mega-menu-list-4">
+                                        {% for link in link.links %}
+                                          <li class="mega-menu-list-item-4">{{ link.title }}</li>
+                                        {% endfor %}
+                                      </ul>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                                  
                               {%- endif -%}
                             </li>
                           {%- endfor -%}
@@ -546,9 +569,11 @@
 
 {% javascript %}
   class StickyHeader extends HTMLElement {
+    
     constructor() {
       super();
     }
+
 
     connectedCallback() {
       this.header = document.getElementById('shopify-section-header');
@@ -673,6 +698,33 @@
       },
       "url": {{ request.origin | append: page.url | json }}
     }
+  </script>
+  <script>
+    let items = document.querySelector(".header__inline-menu").querySelectorAll("details");
+    let shopMenu = document.querySelector(".shop-menu");
+    items.forEach(item => {
+      item.addEventListener("mouseover", () => {
+        shopMenu.removeAttribute("open");
+        item.setAttribute("open", true);
+        item.querySelector("ul").addEventListener("mouseleave", () => {
+          item.removeAttribute("open");
+        });
+      item.addEventListener("mouseleave", () => {
+        item.removeAttribute("open");
+        shopMenu.setAttribute("open", true);
+      });
+    });
+  });
+
+  let mobileItems = document.querySelector(".menu-drawer__menu").querySelectorAll("details");
+    let mobileShopMenu = document.querySelector(".mobile-shop-menu");
+    mobileItems.forEach(item => {
+      item.addEventListener("click", () => {
+        console.log('clicked');
+        mobileItems.removeAttribute("open");
+        item.setAttribute("open", true);
+    });
+  });
   </script>
 {%- endif -%}
 

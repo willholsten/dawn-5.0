@@ -91,3 +91,159 @@
 .mega-menu__list--condensed .mega-menu__link {
   font-weight: normal;
 }
+
+
+
+
+
+
+
+#menu-drawer {
+  .mega-menu-list-1 {
+    display: flex;
+    visibility: visible;
+
+    
+  }
+
+  #Details-menu-drawer-menu-item-1,
+  #Details-menu-drawer-menu-item-2,
+  #Details-menu-drawer-menu-item-3 {
+    > .menu-drawer__submenu {
+      top: 150px;
+      transform: none;
+      transition: none;
+      visibility: visible;
+    }
+
+    &[open] {
+      > .menu-drawer__menu-item {
+        pointer-events: none;
+      }
+    }
+  }
+
+
+}
+
+
+
+
+
+.header-wrapper {
+  position: relative; 
+
+  .header--has-menu {
+    padding-bottom: 50px;
+  }
+  .mega-menu {
+
+    > .header__menu-item { 
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    .mega-menu__content {
+      overflow: visible;
+      z-index: 10;
+      bottom: 0;
+      top: unset;
+    }
+
+    .mega-menu-list-1 {
+      #Details-HeaderMenu-1 {
+        > .header__menu-item {
+          &:hover {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .mega-menu-list-2,
+    .mega-menu-list-3 {
+      display: none;
+    }
+
+    .mega-menu-list-2 {
+      display: none;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      list-style-type: none;
+    }
+
+    .mega-menu-list-item-2 {
+      padding: 5px 10px;
+    }
+
+    .mega-menu-list-3 {
+      width: 100vw;
+      position: absolute;
+      background-color: #fff;
+      padding-left: 0;
+
+      &.vertical {
+        .mega-menu-list-item-3 {
+          font-weight: normal;
+        }
+      }
+    }
+
+    .mega-menu-list-item-3 {
+      font-weight: bold;
+    }
+
+    .mega-menu-list-4 {
+      font-weight: normal;
+      padding-left: 0;
+    }
+
+    .mega-menu-list-item-4 {
+      padding-left: 0;
+    }
+
+  
+    &[open] {
+
+      > .header__menu-item {
+        opacity: 1;
+        pointer-events: none;
+
+        span {
+          text-decoration: none;
+        }
+      }
+      .mega-menu-list-1 {
+        > .active {
+          .mega-menu-list-2 {
+            display: flex;
+          }
+        }
+      }
+
+      .mega-menu-list-2 {
+        display: grid;
+        height: 50px;
+      }
+      .mega-menu-list-item-2 {
+        &:hover {
+          > .mega-menu-list-3 {
+            display: flex;
+          }
+          > .mega-menu-list-3.vertical {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
